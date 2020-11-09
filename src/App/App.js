@@ -1,11 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
 import React from "react";
+import Home from '../Home/Home';
+import Data from '../Data/Data';
+import {HashRouter as Router, Route} from 'react-router-dom';
 
 function App() {
 
   const [listaEscenas, setListaEscenas] = React.useState([]);
   var numeroDeBailarinesIngresados = 22;
+  var excitacion = 57;
 
   const bailarines =[
     {
@@ -138,23 +141,37 @@ function generar(){
 
 
   return (
+
     <div className="App">
+
+
+      <Router>
+
+        <Route path="/" exact component={Home}/>
+        <Route path="/data" component={Data}/>    
+    
+    
+    
       <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
+  
         <button onClick={generar}>Generar</button>
         <p>
         Esta obra tendra: 
           
           {listaEscenas.map((numeroBailarinesEscena, index)=>{
-            return(<li>Escena {index+1}: {Math.round( numeroBailarinesEscena * numeroDeBailarinesIngresados )}</li>)
+            return(<li>Escena {index+1}: {Math.round( numeroBailarinesEscena * numeroDeBailarinesIngresados )} y una excitación de: {Math.round( numeroBailarinesEscena * excitacion )} % </li>)
           })
-          }
+        }
 
         </p>
 
         
         
       </header>
+
+        </Router>
+
+
     </div>
   );
 }
