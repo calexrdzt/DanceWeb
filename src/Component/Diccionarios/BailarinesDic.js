@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Home = () =>{
+const BailarinesDic = () =>{
     return <div>
 
     </div>
 
 }
 
-export default Home;
+export default BailarinesDic; 
