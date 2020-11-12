@@ -16,7 +16,7 @@ input[type="number"]::-webkit-inner-spin-button {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  height: 663px;
+  height: auto;
   width: 100%;
   background-color: black;
   background-image: url("/src/images/FondoData.jpg");
@@ -158,7 +158,7 @@ input[type="number"]::-webkit-inner-spin-button {
       -ms-flex-pack: justify;
           justify-content: space-between;
   background-color: #646464;
-  width: 25%;
+  width: 20%;
   padding: 15px 30px;
   border-radius: 15px;
   color: white;
@@ -176,7 +176,7 @@ input[type="number"]::-webkit-inner-spin-button {
       -ms-flex-pack: justify;
           justify-content: space-between;
   background-color: #646464;
-  width: 25%;
+  width: 16%;
   padding: 15px 30px;
   border-radius: 15px;
   color: white;
@@ -268,10 +268,16 @@ input[type="number"]::-webkit-inner-spin-button {
       -ms-flex-pack: justify;
           justify-content: space-between;
   background-color: rgba(207, 207, 207, 0.747);
-  width: 50%;
+  width: 60%;
   padding: 8px 20px;
   border-radius: 15px;
   color: white;
   margin: 10px auto;
+}
+
+.btn_mas {
+  font-size: 15px;
+  height: 40px;
+  width: 100px;
 }
 /*# sourceMappingURL=Data.css.map */

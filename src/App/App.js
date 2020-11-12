@@ -3,7 +3,7 @@ import * as React from "react";
 import {HashRouter as Router, Route } from 'react-router-dom';
 
 import Home from '../Views/Home/Home';
-import Data from '../Views/Data/Data';
+import { Data } from '../Views/Data/Data';
 import { Contexto } from '../Utils/Contexto';
 
 
