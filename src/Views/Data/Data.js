@@ -5,11 +5,13 @@ import Header from '../../Component/Header/Header';
 import Bailarines from '../../Component/Diccionarios/BailarinesDic'
 
 export const Data = () =>{
-
-  var refBailarines = useRef();
+  // console.log('this',Bailarines)
+  const refBailarines = useRef();
+  console.log('padre',refBailarines)
 
   function generarTodos(){
- //   refBailarines.current.generar();
+
+   refBailarines.current.generar();
    
    // console.log('Funciona ' + refBailarines.current.generar())
   }
@@ -70,7 +72,7 @@ export const Data = () =>{
                     <p className="titulo">Número de escenas</p>
               
                       
-                      <Bailarines ref={refBailarines}/>
+                      <Bailarines ref={refBailarines} />
 
               </div>
               

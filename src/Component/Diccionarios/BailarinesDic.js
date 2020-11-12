@@ -1,73 +1,36 @@
-import React from 'react';
+import React, { 
+  forwardRef,
+  useImperativeHandle,
 
-export const BailarinesDic = (props) =>{
+} from 'react'
+import bailarines from '../../Utils/bailarines'
+
+  
+const shuffle = (a) => {
+  var j, x, i;
+  for (i = a.length - 1; i > 0; i--) {
+      j = Math.floor(Math.random() * (i + 1));
+      x = a[i];
+      a[i] = a[j];
+      a[j] = x;
+  }
+  return a;
+}
 
 
+export function BailarinesDic  (props , ref){
+  console.log(ref , props)
     const [listaEscenas, setListaEscenas] = React.useState([]);
     var numeroDeBailarinesIngresados = 22;
     var excitacion = 57;
   
-    const bailarines =[
-      {
-        id:"0",
-        escenas: ["0.3","0.3","0.4","0.6","0.7","1"],
-      },
-      {
-        id:"0.1",
-        escenas: ["0.3","0.5","0.8","0.9","1","1","1"],
-      },
-      {
-        id:"0.2",
-        escenas: ["0","0.3","0.4","0.4","0.7","0.7","1","1"],
-      },
-      {
-        id:"0.3",
-        escenas: ["0","0.2","0.2","0.3","0.3","0.3","0.3","0.3","0.4","0.7","1"],
-      },
-      {
-        id:"0.4",
-        escenas: ["0","0","0.1","0.2","0.5","0.6","1","1","1"],
-      },
-      {
-        id:"0.5",
-        escenas: ["0.1","0.3","0.6","1","1","1"],
-      },
-      {
-        id:"0.6",
-        escenas: ["0.2","0.2","0.4","0.6","0.6","0.9"],
-      },
-      {
-        id:"0.7",
-        escenas: ["0.2","0.3","0.4","0.9","1"],
-      },
-      {
-        id:"0.8",
-        escenas: ["0.2"],
-      },
-      {
-        id:"0.9",
-        escenas: ["0.1","0.6","end"],
-      },
-      {
-        id:"1",
-        escenas: ["0.1","0.1","0.1","0.3","0.4","0.4","0.4","0.5","0.5","0.5","0.5","0.7","1","1","1","1","1","1","1","1","1","1","end","end","end","end","end","end","end","end"],
-      },
+    
   
-    ] 
-  
-  
-  
-  function shuffle(a) {
-    var j, x, i;
-    for (i = a.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = a[i];
-        a[i] = a[j];
-        a[j] = x;
-    }
-    return a;
-  }
-  
+    useImperativeHandle(ref, () => ({
+      generar:generar,
+      
+
+    }));
   
   
   function generar(){
@@ -89,7 +52,8 @@ export const BailarinesDic = (props) =>{
     var escenaSelect = [];
   
     
-    console.log(itemRdm);
+    // console.log(itemRdm);
+
   
     for(let i=0; i<nEscenas; i++){ 
     
@@ -103,7 +67,7 @@ export const BailarinesDic = (props) =>{
         escenaFinal=itemRdm.escenas[0];
       }
   
-      console.log("Mi escena final: " , itemRdm.escenas[0]);
+      // console.log("Mi escena final: " , itemRdm.escenas[0]);
   
       for(let j=0; j<bailarines.length; j++){
         
@@ -135,4 +99,4 @@ export const BailarinesDic = (props) =>{
   );
 }
 
-export default BailarinesDic;
+export default forwardRef(BailarinesDic);
