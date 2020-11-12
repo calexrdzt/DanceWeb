@@ -21,10 +21,11 @@ p {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  background-image: url("/src/images/FondoHome.jpg");
+  background-color: rgba(129, 17, 17, 0.8);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .home_in {

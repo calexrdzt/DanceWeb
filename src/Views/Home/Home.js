@@ -6,7 +6,7 @@ const Home = () =>{
     
     
     
-    return <div className="home" style={{backgroundImage: 'url(./images/FondoHome.jpg)'}}>
+    return <div className="home">
 
     <Header/>
         <div className="home_in"> 

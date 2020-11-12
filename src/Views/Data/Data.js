@@ -86,7 +86,7 @@ const Data = () =>{
   
     var itemRdm = bailarines[bailarines.length-1]; /*PAra iniciar en rdm le damos IndexRdm*/
   
-    var nEscenas = 10; /*Numero de escenas a generar*/
+    var nEscenas = 5; /*Numero de escenas a generar*/
   
     var escenaSelect = [];
   
@@ -145,16 +145,102 @@ const Data = () =>{
 
       <Header/>
 
-      <button onClick={generar}>Generar</button>
-        <p>
-        Esta obra tendra: 
-          
-          {listaEscenas.map((numeroBailarinesEscena, index)=>{
-            return(<li>Escena {index+1}: {Math.round( numeroBailarinesEscena * numeroDeBailarinesIngresados )} y una excitación de: {Math.round( numeroBailarinesEscena * excitacion )} % </li>)
-          })
-        }
+      <div className="data_contenido">
 
+
+          <div className="data_inputs">
+              <div className="data_inputs-nombre">
+                
+                <label className="etiqueta">Nombra tu proyecto</label>
+                <input className="inputs data_inputs-nombreInput" type="text" placeholder="Nombre del proyecto"></input> 
+              
+              </div>
+              <div className="data_inputs-byd">
+                
+                <div className="contenedor cont_bailarines"> 
+                
+                <label>Número de bailarines</label> 
+                <input placeholder="00" className="input_pequeño" type="number"></input>
+              
+                </div>
+
+                <div className="contenedor cont_bailarines"> 
+                
+                <label>Duración</label> 
+                <input placeholder="00:00" className="input_pequeño" type="number"></input>
+              
+                </div>
+                
+              
+              
+              </div>
+              
+              <div className="data_inputs-btn"><button className="button btn-generar" onClick={generar}>Generar</button></div>
+              
+          </div>
+          
+          <div className="data_mezcla"> 
+          
+            <div className="contenedor contenedor_mezcla"> <p>Subir mezcla</p></div> 
+          
+          </div>
+
+          <p className="data_msj">
+            Aquí será creado el modelo a partir de los datos que ingreses arriba.
         </p>
+
+          <div className="data_resultados"> 
+
+              <div className="data_resultados-escenas">
+
+                    <p className="titulo">Número de escenas</p>
+                    <p>
+                    Esta obra tendra: 
+                      
+                      {listaEscenas.map((numeroBailarinesEscena, index)=>{
+                        return(<li className="li_contenedor">Escena {index+1}: {Math.round( numeroBailarinesEscena * numeroDeBailarinesIngresados )} </li>)
+                      })
+                    }
+
+                    </p>
+
+              </div>
+              
+              <div className="data_resultados-excitacion">
+
+              <p className="titulo">Excitación del público</p>
+              <p>
+                    Esta obra tendra: 
+                      
+                      {listaEscenas.map((numeroBailarinesEscena, index)=>{
+                        return(<li className="li_contenedor">Escena {index+1}: {Math.round( numeroBailarinesEscena * numeroDeBailarinesIngresados )} </li>)
+                      })
+                    }
+
+                    </p>
+              </div>
+              
+              <div className="data_resultados-bailarines">
+
+              <p className="titulo">Bailarines en escena</p>
+              <p>
+                    Esta obra tendra: 
+                      
+                      {listaEscenas.map((numeroBailarinesEscena, index)=>{
+                        return(<li className="li_contenedor">Escena {index+1}: {Math.round( numeroBailarinesEscena * numeroDeBailarinesIngresados )} </li>)
+                      })
+                    }
+
+                    </p>
+              </div>
+          
+            
+          
+        </div>
+        
+      
+      </div>
+
 
 
     </div>
