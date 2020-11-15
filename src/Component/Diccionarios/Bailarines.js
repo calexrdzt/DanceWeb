@@ -1,9 +1,5 @@
-import React, { 
-  forwardRef,
-  useImperativeHandle,
-
-} from 'react'
-import bailarines from '../../Utils/bailarines'
+import React, { forwardRef, useImperativeHandle } from 'react'
+import bailarines from '../../Utils/BailarinesDic'
 
   
 const shuffle = (a) => {
@@ -18,8 +14,10 @@ const shuffle = (a) => {
 }
 
 
-export function BailarinesDic  (props , ref){
-  console.log(ref , props)
+export function Bailarines (props , ref){
+  
+  console.log(ref , props);
+  console.log(bailarines);
     const [listaEscenas, setListaEscenas] = React.useState([]);
     var numeroDeBailarinesIngresados = 22;
     var excitacion = 57;
@@ -84,10 +82,8 @@ export function BailarinesDic  (props , ref){
     setListaEscenas(escenaSelect);
   }
 
-    return( <div className="data">
+    return( <div className="bailarines">
 
-
-                    <p className="titulo">Número de escenas</p>
               
                       
                       {listaEscenas.map((numeroBailarinesEscena, index)=>{
@@ -99,4 +95,4 @@ export function BailarinesDic  (props , ref){
   );
 }
 
-export default forwardRef(BailarinesDic);
+export default forwardRef(Bailarines);

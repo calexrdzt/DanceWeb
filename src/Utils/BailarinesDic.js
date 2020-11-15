@@ -46,4 +46,4 @@ const bailarines =[
 
   ] 
 
-  export default bailarines
+  export default bailarines;

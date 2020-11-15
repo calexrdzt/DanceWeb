@@ -2,18 +2,21 @@ import React from 'react';
 import {useRef} from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../Component/Header/Header';
-import Bailarines from '../../Component/Diccionarios/BailarinesDic'
+import Bailarines from '../../Component/Diccionarios/Bailarines';
+import Excitacion from '../../Component/Diccionarios/Excitacion';
 
 export const Data = () =>{
-  // console.log('this',Bailarines)
+
   const refBailarines = useRef();
-  console.log('padre',refBailarines)
+  const refExcitacion = useRef();
 
+  
   function generarTodos(){
+    
+    refBailarines.current.generar();
+    refExcitacion.current.generar();
+    console.log('referecnia ' , refBailarines.current.generar());
 
-   refBailarines.current.generar();
-   
-   // console.log('Funciona ' + refBailarines.current.generar())
   }
 
   
@@ -81,7 +84,7 @@ export const Data = () =>{
               <p className="titulo">Excitación del público</p>
           
                       
-                     
+                   <Excitacion ref={refExcitacion}/>
 
                     <button className="button btn_mas">Más</button>
 
