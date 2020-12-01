@@ -1,5 +1,6 @@
-import React, { forwardRef, useImperativeHandle } from 'react'
+import React, { forwardRef, useImperativeHandle} from 'react'
 import bailarines from '../../Utils/BailarinesDic'
+import { Contexto } from '../../Utils/Contexto';
 
   
 const shuffle = (a) => {
@@ -15,11 +16,13 @@ const shuffle = (a) => {
 
 
 export function Bailarines (props , ref){
+
+  const contexto = React.useContext(Contexto);
   
   console.log(ref , props);
   console.log(bailarines);
     const [listaEscenas, setListaEscenas] = React.useState([]);
-    var numeroDeBailarinesIngresados = 22;
+    var numeroDeBailarinesIngresados = contexto.bailarinesI;
     var excitacion = 57;
   
     
@@ -80,19 +83,10 @@ export function Bailarines (props , ref){
   
     }
     setListaEscenas(escenaSelect);
+    contexto.setListaEscenasB(listaEscenas);
   }
 
-    return( <div className="bailarines">
-
-              
-                      
-                      {listaEscenas.map((numeroBailarinesEscena, index)=>{
-                        return(<li className="li_contenedor">Escena {index+1}: {Math.round( numeroBailarinesEscena * numeroDeBailarinesIngresados )} </li>)
-                      })
-                    }
-
-   </div>
-  );
+    return( <div className="bailarines"></div>);
 }
 
 export default forwardRef(Bailarines);

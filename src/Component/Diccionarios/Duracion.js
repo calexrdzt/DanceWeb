@@ -1,6 +1,6 @@
 import React, { forwardRef, useImperativeHandle } from 'react';
+import bailarines from '../../Utils/DuracionDic';
 import { Contexto } from '../../Utils/Contexto';
-import bailarines from '../../Utils/ExcitacionDic';
 
   
 const shuffle = (a) => {
@@ -15,15 +15,13 @@ const shuffle = (a) => {
 }
 
 
-export function Excitacion  (props , ref){
-  
+export function Duracion  (props , ref){
+
   const contexto = React.useContext(Contexto);
   
   console.log(ref , props)
-    const [listaEscenas, setListaEscenas] = React.useState([]);
-    var numeroDeBailarinesIngresados = 60;
-    var excitacion = 57;
-  
+
+    const [listaEscenas, setListaEscenas] = React.useState([]); 
     
   
     useImperativeHandle(ref, () => ({
@@ -46,7 +44,7 @@ export function Excitacion  (props , ref){
     var indexNumeroRdm = numeros[0];
     
   
-    var itemRdm = bailarines[bailarines.length-6]; /*PAra iniciar en rdm le damos IndexRdm*/
+    var itemRdm = bailarines[indexNumeroRdm]; /*PAra iniciar en rdm le damos IndexRdm*/
   
     var nEscenas = 5; /*Numero de escenas a generar*/
   
@@ -83,10 +81,14 @@ export function Excitacion  (props , ref){
   
     }
     setListaEscenas(escenaSelect);
-    contexto.setListaEscenasE(listaEscenas);
+
+ //   console.log('estas son mis escenas', listaEscenas, 'escenass');
+  //  console.log('Escenas contextp', contexto.listaEscenas );
+
+    contexto.setListaEscenasD(listaEscenas);
   }
 
-    return( <div className="bailarines"></div>);
+    return( <div className="bailarines"> </div>);
 }
 
-export default forwardRef(Excitacion);
+export default forwardRef(Duracion);

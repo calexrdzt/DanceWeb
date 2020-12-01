@@ -1,108 +1,290 @@
 import React from 'react';
-import {useRef} from 'react';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../Component/Header/Header';
 import Bailarines from '../../Component/Diccionarios/Bailarines';
 import Excitacion from '../../Component/Diccionarios/Excitacion';
+import Duracion from '../../Component/Diccionarios/Duracion';
+import Posicion from '../../Component/Diccionarios/Posicion'
+import { Contexto } from '../../Utils/Contexto';
+import TimeField from 'react-simple-timefield';
+import { Progress } from 'react-sweet-progress';
+import "react-sweet-progress/lib/style.css";
 
-export const Data = () =>{
+const Data = () => {
 
   const refBailarines = useRef();
   const refExcitacion = useRef();
+  const refDuracion = useRef();
+  const refPosicion = useRef();
 
-  
-  function generarTodos(){
+  var bailarinesListos = [];
+  var excitacionesListas = [];
+  var duracionesListas = [];
+  var posicionesListas = [];
+
+
+
+  const contexto = React.useContext(Contexto);
+
+  bailarinesListos = contexto.listaEscenasB.map((numeroBailarinesEscena, index) => {
+    return (<p> {Math.round(numeroBailarinesEscena * contexto.bailarinesI)} </p>)
+  })
+
+
+  duracionesListas = contexto.listaEscenasD.map((numeroBailarinesEscena, index) => {
+    return (<p>{index + 1}  |  {Math.round(numeroBailarinesEscena * 90)} </p>)
+  })
+
+  excitacionesListas = contexto.listaEscenasE.map((numeroBailarinesEscena, index) => {
+    return (<p>Excitación escena {index + 1}: {Math.round(numeroBailarinesEscena * 100)} % </p>)
+  })
+
+  posicionesListas = contexto.listaEscenasP.map((numeroBailarinesEscena, index) => {
+    return (<p>Posicion: {Math.round(numeroBailarinesEscena * 10)} puesto </p>)
+  })
+
+
+
+  const handleBailarines = (ev) => {
+    contexto.setBailarinesI(ev.target.value);
+  }
+
+  const handleDuracion = (ev) => {
+    contexto.setDuracionI(ev.target.value);
+  }
+
+  function tiempoSegs() {
+    console.log('duracion escenas', contexto.listaEscenas);
+  }
+
+
+
+  function generarTodos() {
     
+
     refBailarines.current.generar();
     refExcitacion.current.generar();
-    console.log('referecnia ' , refBailarines.current.generar());
+    refDuracion.current.generar();
+    refPosicion.current.generar();
+
+    tiempoSegs();
+
+    const tiempo = contexto.duraciónI;
+
+    console.log('Mi bailarinesListos  ', bailarinesListos);
+    //   console.log('referecnia ' , refBailarines.current.generar());
 
   }
 
-  
+  let resultList = []
+
+  for (let index = 0; index < contexto.listaEscenasD.length; index++) {
+    let escenaD = contexto.listaEscenasD[index];
+    let escenaB = contexto.listaEscenasB[index];
+    let escenaE = contexto.listaEscenasE[index];
+    let escenaP = contexto.listaEscenasP[index];
+
+    let escenaDObj = {
+      nLista: index + 1,
+      result: Math.round(escenaD * 90)
+    }
+
+    let escenaBObj = {
+      nLista: index + 1,
+      result: Math.round(escenaB * contexto.bailarinesI)
+    }
+
+    let escenaEObj = {
+      nLista: index + 1,
+      result: Math.round(escenaE * 100)
+    }
+
+    let escenaPObj = {
+      nLista: index + 1,
+      result: Math.round(escenaP * 10)
+    }
+
+    resultList.push({
+      escenaD: escenaDObj,
+      escenaB: escenaBObj,
+      escenaE: escenaEObj,
+      escenaP: escenaPObj,
+    })
+
+  }
+
+  return (<div className="data">
+
+      <Duracion ref={refDuracion} />
+      <Excitacion ref={refExcitacion} />
+      <Bailarines ref={refBailarines} />
+      <Posicion ref={refPosicion}/>
+
+    <Header />
+
+    <div className="data_contenido">
 
 
-    return( <div className="data">
+      <div className="data_inputs">
+        <div className="data_inputs-nombre">
 
-      <Header/>
+          <label className="etiqueta" >Nombra tu proyecto</label>
+          <input value={contexto.nombreI} className="inputs data_inputs-nombreInput" type="text" placeholder="Nombre del proyecto"></input>
 
-      <div className="data_contenido">
+        </div>
+        <div className="data_inputs-byd">
 
+          <div className="contenedor cont_bailarines">
 
-          <div className="data_inputs">
-              <div className="data_inputs-nombre">
-                
-                <label className="etiqueta" >Nombra tu proyecto</label>
-                <input className="inputs data_inputs-nombreInput" type="text" placeholder="Nombre del proyecto"></input> 
-              
-              </div>
-              <div className="data_inputs-byd">
-                
-                <div className="contenedor cont_bailarines"> 
-                
-                <label>Número de bailarines</label> 
-                <input placeholder="00" className="input_pequeño" type="number"></input>
-              
-                </div>
+            <label>Número de bailarines</label>
+            <input value={contexto.bailarinesI} placeholder="00" className="input_pequeño" type="number" onChange={handleBailarines}></input>
 
-                <div className="contenedor cont_bailarines"> 
-                
-                <label>Duración</label> 
-                <input placeholder="00:00" className="input_pequeño" type="number"></input>
-              
-                </div>
-             
-              </div>
-              
-              <div className="data_inputs-btn"><button className="button btn-generar" onClick={generarTodos}>Generar</button></div>
-              
           </div>
-          
-          <div className="data_mezcla"> 
-          
-            <div className="contenedor contenedor_mezcla"> <p>Subir mezcla</p></div> 
-          
+
+          <div className="contenedor cont_bailarines">
+
+            <label>Duración</label>
+
+
+            <TimeField
+              className="input_pequeño"
+              placeholder="00:00"
+              value={contexto.duracionI}  // {String}   required, format '00:00' or '00:00:00'
+              onChange={handleDuracion}
+              colon=":"
+              showSeconds='true'
+            />
+
           </div>
 
-          <p className="data_msj">
-            Aquí será creado el modelo a partir de los datos que ingreses arriba.
+        </div>
+
+        <div className="data_inputs-btn"><button className="button btn-generar" onClick={generarTodos}>Generar</button></div>
+
+      </div>
+
+      <div className="data_mezcla">
+
+        <div className="contenedor contenedor_mezcla"> <p>Subir mezcla</p></div>
+
+      </div>
+
+      <p className="data_msj">
+        Aquí será creado el modelo a partir de los datos que ingreses arriba.
         </p>
 
-          <div className="data_resultados"> 
+      <div className="data_resultados-titulos">
 
-              <div className="data_resultados-escenas">
-
-                    <p className="titulo">Número de escenas</p>
-              
-                      
-                      <Bailarines ref={refBailarines} />
-
-              </div>
-              
-              <div className="data_resultados-excitacion">
-
-              <p className="titulo">Excitación del público</p>
-          
-                      
-                   <Excitacion ref={refExcitacion}/>
-
-                    <button className="button btn_mas">Más</button>
-
-
-              </div>
-              
-              <div className="data_resultados-bailarines">
-
-              <p className="titulo">Bailarines en escena</p>
-            
-                      
-                     
-                   
-
-              </div>
+        <div className="data_resultados-cont">
+          <p className="titul">Escena</p>
         </div>
+
+        <div className="data_resultados-cont">
+          <p className="titul">Duración</p>
+        </div>
+
+        
+        <div className="data_resultados-cont">
+        <p className="titul">BPM</p>
+        </div>
+
+        
+        <div className="data_resultados-cont">
+        <p className="titul">Bailarines</p>
+        </div>
+
+        
+        <div className="data_resultados-cont">
+        <p className="titul">Excitacion</p>
+        </div>
+  
+        
+
       </div>
+
+
+      <div>
+      
+
+
+        {resultList.map((r, index) => {
+          return (<div className="li_contenedor">
+            <div className="data_resultados-cont">
+              <p> {index + 1}</p>
+            </div>
+
+            <div className="data_resultados-cont">
+              <p> {r.escenaD.result} segs</p>
+            </div>
+
+            <div className="data_resultados-cont">
+              <p> {r.escenaD.result}</p>
+            </div> 
+
+            <div className="data_resultados-cont">
+              <p> bailarines {r.escenaB.result}</p>
+            </div>
+
+            
+
+            {/*
+            <div>
+             <p>| | {r.escenaE.result}%</p> 
+            </div>
+              */}
+
+            <div className="data_resultados-cont">
+              <Progress percent={r.escenaE.result} status="default" theme={ {default:{ color: 'hsl(35,'+ r.escenaE.result +'%,50%)'}}} />
+            </div>
+
+            <div className="data_resultados-cont">
+              <p> Posición {r.escenaP.result}</p>
+            </div>
+
+          </div>)
+        })}
+
+
+
+
+
+
+
+
+
+
+      </div>
+
+      <div className="data_resultados-grafica">
+        <div className="data_resultados-posicion">
+          <div className="titulos_grafica">Posiciones</div>
+          <div>Posiciones</div>
+        </div>
+
+        <div className="data_resultados-abajo">
+          
+          <div className="titulos_grafica-grande">
+            <p>Cantidad de bailarines</p>
+            <p>Pronostico de excitación</p>
+            <p>BPMs de la musica</p>
+          </div>
+
+          <div className="data_resultados-escenas">
+            <div className="escena">escena 1</div >
+            <div className="escena">escena 2</div >
+            <div className="escena">escena 3</div >
+            <div className="escena">escena 4</div >
+          </div>
+        </div>
+
+      </div>
+
+
+
+
     </div>
+  </div>
   );
 }
 

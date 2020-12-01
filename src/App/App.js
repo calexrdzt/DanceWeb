@@ -3,20 +3,40 @@ import * as React from "react";
 import {HashRouter as Router, Route } from 'react-router-dom';
 
 import Home from '../Views/Home/Home';
-import { Data } from '../Views/Data/Data';
+import Data from '../Views/Data/Data';
 import { Contexto } from '../Utils/Contexto';
 
 
 function App() {
 
-  const [nombre, setNombre] = React.useState('');
-  const [duracion, setDuracion] = React.useState('');
-  const [bailarines, setBailarines] = React.useState('');
+  const [nombre, setNombre] = React.useState('Este es mi proyecto');
+  const [duracion, setDuracion] = React.useState('00:04:22');
+  const [bailarines, setBailarines] = React.useState('15');
+  const [listaEscenasD, setlistaEscenasD] = React.useState([]);
+  const [listaEscenasB, setlistaEscenasB] = React.useState([]);
+  const [listaEscenasE, setlistaEscenasE] = React.useState([]);
+  const [listaEscenasP, setlistaEscenasP] = React.useState([]);
   
   const valoresIngresados = {
-      nombre: nombre,
-      duracion: duracion,
-      bailarines: bailarines,
+      nombreI: nombre,
+      duracionI: duracion,
+      bailarinesI: bailarines,
+      
+      setBailarinesI: setBailarines,
+      setNombreI: setNombre,
+      setDuracionI: setDuracion,
+      
+      listaEscenasD: listaEscenasD,
+      setListaEscenasD: setlistaEscenasD,
+      
+      listaEscenasB:listaEscenasB,
+      setListaEscenasB: setlistaEscenasB,
+
+      listaEscenasE:listaEscenasE,
+      setListaEscenasE: setlistaEscenasE,
+
+      listaEscenasP:listaEscenasP,
+      setListaEscenasP: setlistaEscenasP,
   }
 
   return (
@@ -24,17 +44,17 @@ function App() {
     <div className="App">
 
 
-      <Contexto.Provider value={valoresIngresados}>
-
         <Router>
+          <Contexto.Provider value={valoresIngresados}>
+
 
           <Route path="/" exact component={Home}/>
           <Route path="/data" component={Data}/>    
     
 
-        </Router>
 
-      </Contexto.Provider>
+          </Contexto.Provider>
+        </Router>
 
     </div>
   );

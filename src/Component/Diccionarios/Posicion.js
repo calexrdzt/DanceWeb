@@ -1,6 +1,6 @@
-import React, { forwardRef, useImperativeHandle } from 'react';
+import React, { forwardRef, useImperativeHandle} from 'react'
+import bailarines from '../../Utils/PosicionDic'
 import { Contexto } from '../../Utils/Contexto';
-import bailarines from '../../Utils/ExcitacionDic';
 
   
 const shuffle = (a) => {
@@ -15,21 +15,18 @@ const shuffle = (a) => {
 }
 
 
-export function Excitacion  (props , ref){
-  
+export function Posicion (props , ref){
+
   const contexto = React.useContext(Contexto);
   
-  console.log(ref , props)
-    const [listaEscenas, setListaEscenas] = React.useState([]);
-    var numeroDeBailarinesIngresados = 60;
-    var excitacion = 57;
-  
+  console.log(ref , props);
+  console.log(bailarines);
+
+    const [listaEscenas, setListaEscenas] = React.useState([]); 
     
   
     useImperativeHandle(ref, () => ({
       generar:generar,
-      
-
     }));
   
   
@@ -44,9 +41,8 @@ export function Excitacion  (props , ref){
     numeros = shuffle(numeros);
   
     var indexNumeroRdm = numeros[0];
-    
   
-    var itemRdm = bailarines[bailarines.length-6]; /*PAra iniciar en rdm le damos IndexRdm*/
+    var itemRdm = bailarines[indexNumeroRdm]; /*PAra iniciar en rdm le damos IndexRdm*/
   
     var nEscenas = 5; /*Numero de escenas a generar*/
   
@@ -83,10 +79,10 @@ export function Excitacion  (props , ref){
   
     }
     setListaEscenas(escenaSelect);
-    contexto.setListaEscenasE(listaEscenas);
+    contexto.setListaEscenasP(listaEscenas);
   }
 
     return( <div className="bailarines"></div>);
 }
 
-export default forwardRef(Excitacion);
+export default forwardRef(Posicion);
