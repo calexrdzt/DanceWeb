@@ -1,11 +1,14 @@
 import React from 'react';
 import { useRef } from 'react';
-import { Link } from 'react-router-dom';
 import Header from '../../Component/Header/Header';
 import Bailarines from '../../Component/Diccionarios/Bailarines';
 import Excitacion from '../../Component/Diccionarios/Excitacion';
 import Duracion from '../../Component/Diccionarios/Duracion';
 import Posicion from '../../Component/Diccionarios/Posicion'
+
+import LineGraph from '../../Component/Graficas/myLineGraph'
+import { managerData, yearLabels } from '../../Component/Graficas/mockData';
+
 import { Contexto } from '../../Utils/Contexto';
 import TimeField from 'react-simple-timefield';
 import { Progress } from 'react-sweet-progress';
@@ -23,9 +26,19 @@ const Data = () => {
   var duracionesListas = [];
   var posicionesListas = [];
 
+  
+  var state = {
+    data: managerData,
+    labels: yearLabels
+  }
+  
+  const { data, labels } = React.useState(state);
 
-
+  
+  
   const contexto = React.useContext(Contexto);
+
+  console.log('this is my state   ', LineGraph);
 
   bailarinesListos = contexto.listaEscenasB.map((numeroBailarinesEscena, index) => {
     return (<p> {Math.round(numeroBailarinesEscena * contexto.bailarinesI)} </p>)
@@ -113,8 +126,10 @@ const Data = () => {
     })
 
   }
+  
 
   return (<div className="data">
+    
 
       <Duracion ref={refDuracion} />
       <Excitacion ref={refExcitacion} />
@@ -271,17 +286,14 @@ const Data = () => {
           </div>
 
           <div className="data_resultados-escenas">
-            <div className="escena">escena 1</div >
-            <div className="escena">escena 2</div >
-            <div className="escena">escena 3</div >
-            <div className="escena">escena 4</div >
+          <LineGraph/>
           </div>
         </div>
 
       </div>
 
 
-
+      
 
     </div>
   </div>
