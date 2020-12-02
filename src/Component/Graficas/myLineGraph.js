@@ -13,6 +13,8 @@ export default class LineGraph extends Component {
     componentDidMount() {
 
         const dataContexto = this.context;
+
+        console.log("este si esss", dataContexto);
         
         const myChartRef = this.chartRef.current.getContext("2d");
 

@@ -46,7 +46,7 @@ export function Duracion  (props , ref){
   
     var itemRdm = bailarines[indexNumeroRdm]; /*PAra iniciar en rdm le damos IndexRdm*/
   
-    var nEscenas = 5; /*Numero de escenas a generar*/
+    var nEscenas = contexto.nEscenas; /*Numero de escenas a generar*/
   
     var escenaSelect = [];
   

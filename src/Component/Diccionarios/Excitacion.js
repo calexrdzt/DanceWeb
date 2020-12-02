@@ -48,7 +48,7 @@ export function Excitacion  (props , ref){
   
     var itemRdm = bailarines[bailarines.length-6]; /*PAra iniciar en rdm le damos IndexRdm*/
   
-    var nEscenas = 5; /*Numero de escenas a generar*/
+    var nEscenas = contexto.nEscenas; /*Numero de escenas a generar*/
   
     var escenaSelect = [];
   

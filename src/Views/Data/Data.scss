@@ -116,9 +116,6 @@ margin: 0;
             box-sizing: content-box;
         }
 
-
-        
-
         
     }
 
@@ -261,9 +258,16 @@ margin: 0;
         justify-content: space-around;
         width: 80%;
         height: 100%;
-        background-color: sandybrown;
+        background-color: white;
         align-items: flex-end;
     }
+}
+
+.chart{
+    padding: 20px;
+    width: 80%;
+    height: 90%;
+
 }
 
 .titulos_grafica{
@@ -293,3 +297,19 @@ margin: 0;
     width: 160px;
 
 }
+
+
+.inputTime::-webkit-datetime-edit-ampm-field {
+    display: none !important; 
+}
+
+input[type=time]::-webkit-clear-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+  }
+
+  input[type=time]::-webkit-datetime-edit-ampm-field {
+    display: none;
+  }

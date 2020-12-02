@@ -10,22 +10,25 @@ import { Contexto } from '../Utils/Contexto';
 function App() {
 
   const [nombre, setNombre] = React.useState('Este es mi proyecto');
-  const [duracion, setDuracion] = React.useState('00:04:22');
+  const [duracion, setDuracion] = React.useState('04:22');
   const [bailarines, setBailarines] = React.useState('15');
   const [listaEscenasD, setlistaEscenasD] = React.useState([]);
   const [listaEscenasB, setlistaEscenasB] = React.useState([]);
   const [listaEscenasE, setlistaEscenasE] = React.useState([]);
   const [listaEscenasP, setlistaEscenasP] = React.useState([]);
+  const [nEscenas, setNEscenas] = React.useState(1);
   
   const valoresIngresados = {
       nombreI: nombre,
       duracionI: duracion,
       bailarinesI: bailarines,
+      nEscenas: nEscenas,
       
       setBailarinesI: setBailarines,
       setNombreI: setNombre,
       setDuracionI: setDuracion,
-      
+      setNEscenas: setNEscenas,
+
       listaEscenasD: listaEscenasD,
       setListaEscenasD: setlistaEscenasD,
       

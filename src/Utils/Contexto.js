@@ -6,11 +6,13 @@ export const Contexto = React.createContext({
     nombreI: '',
     duracionI: '',
     bailarinesI: '',
+
+    nEscenas: '',
     
     setBailarinesI: () => null,
     setDuracionI: () => null,
     setNombreI: () => null,
-
+    setNEscenas: () => null,
 
     listaEscenasD: [],
     setListaEscenasD: () => null,
@@ -23,4 +25,6 @@ export const Contexto = React.createContext({
 
     listaEscenasP: [],
     setListaEscenasP: () => null,
+
+
 });

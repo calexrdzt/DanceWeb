@@ -18,9 +18,6 @@ const shuffle = (a) => {
 export function Posicion (props , ref){
 
   const contexto = React.useContext(Contexto);
-  
-  console.log(ref , props);
-  console.log(bailarines);
 
     const [listaEscenas, setListaEscenas] = React.useState([]); 
     
@@ -44,7 +41,7 @@ export function Posicion (props , ref){
   
     var itemRdm = bailarines[indexNumeroRdm]; /*PAra iniciar en rdm le damos IndexRdm*/
   
-    var nEscenas = 5; /*Numero de escenas a generar*/
+    var nEscenas = contexto.nEscenas; /*Numero de escenas a generar*/
   
     var escenaSelect = [];
   
