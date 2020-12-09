@@ -9,14 +9,19 @@ import { Contexto } from '../Utils/Contexto';
 
 function App() {
 
-  const [nombre, setNombre] = React.useState('Este es mi proyecto');
-  const [duracion, setDuracion] = React.useState('04:22');
-  const [bailarines, setBailarines] = React.useState('15');
+  const [nombre, setNombre] = React.useState('');
+  const [duracion, setDuracion] = React.useState('');
+  const [bailarines, setBailarines] = React.useState('');
   const [listaEscenasD, setlistaEscenasD] = React.useState([]);
   const [listaEscenasB, setlistaEscenasB] = React.useState([]);
   const [listaEscenasE, setlistaEscenasE] = React.useState([]);
   const [listaEscenasP, setlistaEscenasP] = React.useState([]);
-  const [nEscenas, setNEscenas] = React.useState(1);
+  const [listaEscenasBPM, setlistaEscenasBPM] = React.useState([]);
+  const [listaEscenasResultado, setListaEscenasResultado] = React.useState([]);
+  const [nEscenas, setNEscenas] = React.useState(3);
+  const [anchoEscena, setAnchoEscena] = React.useState([]);
+
+  
   
   const valoresIngresados = {
       nombreI: nombre,
@@ -40,6 +45,15 @@ function App() {
 
       listaEscenasP:listaEscenasP,
       setListaEscenasP: setlistaEscenasP,
+      
+      listaEscenasBPM:listaEscenasBPM,
+      setListaEscenasBPM: setlistaEscenasBPM,
+
+      listaEscenasResultado:listaEscenasResultado,
+      setListaEscenasResultado: setListaEscenasResultado,
+
+      anchoEscena: anchoEscena,
+      setAnchoEscena: setAnchoEscena,
   }
 
   return (

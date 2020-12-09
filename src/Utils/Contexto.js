@@ -26,5 +26,12 @@ export const Contexto = React.createContext({
     listaEscenasP: [],
     setListaEscenasP: () => null,
 
+    listaEscenasBPM: [],
+    setListaEscenasBPM: () => null,
 
+    listaEscenasResultado: [],
+    setListaEscenasResultado: () => null,
+
+    anchoEscena: [],
+    setAnchoEscena: () => null,
 });

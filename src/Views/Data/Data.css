@@ -5,6 +5,10 @@ input[type="number"]::-webkit-inner-spin-button {
   margin: 0;
 }
 
+body {
+  background-color: black;
+}
+
 .data {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -17,12 +21,9 @@ input[type="number"]::-webkit-inner-spin-button {
       -ms-flex-pack: start;
           justify-content: flex-start;
   min-height: 663px;
-  height: auto;
+  height: 100%;
   width: 100%;
   background-color: black;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
 }
 
 .data_contenido {
@@ -34,6 +35,7 @@ input[type="number"]::-webkit-inner-spin-button {
       -ms-flex-direction: column;
           flex-direction: column;
   width: 95%;
+  height: 100%;
   margin: 0 auto;
 }
 
@@ -155,7 +157,10 @@ input[type="number"]::-webkit-inner-spin-button {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  width: 22%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
   margin: 0;
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
@@ -190,6 +195,17 @@ input[type="number"]::-webkit-inner-spin-button {
   font-size: 16px;
   text-align: center;
   -webkit-appearance: none;
+}
+
+.inputTime {
+  background-color: #484848;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  width: 50px !important;
 }
 
 .data_inputs-nombreInput {
@@ -283,7 +299,6 @@ input[type="number"]::-webkit-inner-spin-button {
   border-radius: 15px;
   width: 93%;
   height: auto;
-  background-color: green;
   margin: 0 auto;
 }
 
@@ -298,21 +313,19 @@ input[type="number"]::-webkit-inner-spin-button {
       align-content: space-around;
   width: 100%;
   height: 130px;
-  background-color: blue;
 }
 
 .data_resultados-abajo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -ms-flex-line-pack: distribute;
       align-content: space-around;
   width: 100%;
   height: 400px;
-  background-color: red;
 }
 
 .data_resultados-escenas {
@@ -323,7 +336,6 @@ input[type="number"]::-webkit-inner-spin-button {
       justify-content: space-around;
   width: 80%;
   height: 100%;
-  background-color: white;
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
@@ -331,7 +343,7 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .chart {
   padding: 20px;
-  width: 80%;
+  width: 100%;
   height: 90%;
 }
 
@@ -341,12 +353,16 @@ input[type="number"]::-webkit-inner-spin-button {
   display: flex;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
-          justify-content: end;
-  -ms-flex-line-pack: distribute;
-      align-content: space-around;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 20%;
   height: 100%;
-  background-color: brown;
+  font-family: 'Mulish', sans-serif;
+  font-weight: 800;
+  color: white;
+  text-align: right;
 }
 
 .titulos_grafica-grande {
@@ -372,10 +388,6 @@ input[type="number"]::-webkit-inner-spin-button {
   width: 160px;
 }
 
-.inputTime::-webkit-datetime-edit-ampm-field {
-  display: none !important;
-}
-
 input[type=time]::-webkit-clear-button {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -385,5 +397,13 @@ input[type=time]::-webkit-clear-button {
 
 input[type=time]::-webkit-datetime-edit-ampm-field {
   display: none;
+}
+
+.data_posicion {
+  width: 100px;
+  height: 70px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 /*# sourceMappingURL=Data.css.map */
