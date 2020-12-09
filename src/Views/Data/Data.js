@@ -261,14 +261,14 @@ const Data = () => {
           </div>
         </div>
 
-        <div className="data_mezcla">
+        {/*<div className="data_mezcla">
           <div className="contenedor contenedor_mezcla">
             {" "}
             <p>Subir mezcla</p>
           </div>
         </div>
 
-        {/*<p className="data_msj">
+        <p className="data_msj">
           Aquí será creado el modelo a partir de los datos que ingreses arriba.
   </p>*/}
 
